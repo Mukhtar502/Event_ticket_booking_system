@@ -94,7 +94,7 @@ class BookingService {
       });
 
       logger.info(`Event initialized: ${event.id}, Tickets: ${totalTickets}`);
-      return this.formatResponse(event);
+      return event;
     } catch (error) {
       logger.error(`Error initializing event: ${error.message}`);
       throw error;
@@ -161,7 +161,7 @@ class BookingService {
           logger.info(
             `Ticket booked: User ${userId}, Event ${eventId}, Status: confirmed`
           );
-          return this.formatResponse(booking);
+          return booking;
         }
 
         // CASE 2: No tickets → Add to waiting list
@@ -183,7 +183,7 @@ class BookingService {
         logger.info(
           `Ticket not available: User ${userId}, Event ${eventId}, Position: ${nextPosition}`
         );
-        return this.formatResponse(booking);
+        return booking;
       });
     } catch (error) {
       logger.error(`Error booking ticket: ${error.message}`);
@@ -256,10 +256,7 @@ class BookingService {
           await event.decrement("availableTickets", { by: 1 });
         }
 
-        return {
-          cancelledBooking: this.formatResponse(booking),
-          assignedUser: assignedUser ? this.formatResponse(assignedUser) : null,
-        };
+        return { cancelledBooking: booking, assignedUser };
       });
     } catch (error) {
       logger.error(`Error cancelling booking: ${error.message}`);

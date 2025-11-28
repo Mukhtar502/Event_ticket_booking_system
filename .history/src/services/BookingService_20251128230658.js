@@ -256,9 +256,9 @@ class BookingService {
           await event.decrement("availableTickets", { by: 1 });
         }
 
-        return {
-          cancelledBooking: this.formatResponse(booking),
-          assignedUser: assignedUser ? this.formatResponse(assignedUser) : null,
+        return { 
+          cancelledBooking: this.formatResponse(booking), 
+          assignedUser: assignedUser ? this.formatResponse(assignedUser) : null 
         };
       });
     } catch (error) {

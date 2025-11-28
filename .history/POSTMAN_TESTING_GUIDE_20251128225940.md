@@ -40,7 +40,7 @@ Content-Type: application/json
 
 {
   "name": "Nigeria vs Congo football match",
-  "totalTickets": 500
+  "totalTickets": 5
 }
 ```
 

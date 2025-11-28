@@ -30,6 +30,7 @@ import { formatDateReadable } from "../utils/dateFormatter.js";
   5. Waiting list positions updated for the remaining users
  **/
 
+
 const WaitingList = sequelize.define(
   "WaitingList",
   {
@@ -81,37 +82,6 @@ const WaitingList = sequelize.define(
         unique: false,
       },
     ],
-    hooks: {
-      afterFind(result) {
-        if (!result) return result;
-
-        const formatInstance = (instance) => {
-          if (instance && instance.dataValues) {
-            if (instance.dataValues.createdAt) {
-              instance.dataValues.createdAt = formatDateReadable(
-                instance.dataValues.createdAt
-              );
-            }
-            if (instance.dataValues.updatedAt) {
-              instance.dataValues.updatedAt = formatDateReadable(
-                instance.dataValues.updatedAt
-              );
-            }
-            if (instance.dataValues.timestamp) {
-              instance.dataValues.timestamp = formatDateReadable(
-                instance.dataValues.timestamp
-              );
-            }
-          }
-          return instance;
-        };
-
-        if (Array.isArray(result)) {
-          return result.map(formatInstance);
-        }
-        return formatInstance(result);
-      },
-    },
   }
 );
 

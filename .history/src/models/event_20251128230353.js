@@ -56,33 +56,6 @@ const Event = sequelize.define(
   {
     timestamps: true,
     tableName: "events",
-    hooks: {
-      afterFind(result) {
-        if (!result) return result;
-
-        // Handle both single result and array of results
-        const formatInstance = (instance) => {
-          if (instance && instance.dataValues) {
-            if (instance.dataValues.createdAt) {
-              instance.dataValues.createdAt = formatDateReadable(
-                instance.dataValues.createdAt
-              );
-            }
-            if (instance.dataValues.updatedAt) {
-              instance.dataValues.updatedAt = formatDateReadable(
-                instance.dataValues.updatedAt
-              );
-            }
-          }
-          return instance;
-        };
-
-        if (Array.isArray(result)) {
-          return result.map(formatInstance);
-        }
-        return formatInstance(result);
-      },
-    },
   }
 );
 

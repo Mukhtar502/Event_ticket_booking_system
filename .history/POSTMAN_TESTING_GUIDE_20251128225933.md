@@ -39,8 +39,8 @@ POST http://localhost:3000/initialize
 Content-Type: application/json
 
 {
-  "name": "Nigeria vs Congo football match",
-  "totalTickets": 500
+  "name": "Nigeria vs ",
+  "totalTickets": 5
 }
 ```
 

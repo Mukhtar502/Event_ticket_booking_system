@@ -78,37 +78,6 @@ const Booking = sequelize.define(
         unique: false,
       },
     ],
-    hooks: {
-      afterFind(result) {
-        if (!result) return result;
-
-        const formatInstance = (instance) => {
-          if (instance && instance.dataValues) {
-            if (instance.dataValues.createdAt) {
-              instance.dataValues.createdAt = formatDateReadable(
-                instance.dataValues.createdAt
-              );
-            }
-            if (instance.dataValues.updatedAt) {
-              instance.dataValues.updatedAt = formatDateReadable(
-                instance.dataValues.updatedAt
-              );
-            }
-            if (instance.dataValues.bookedAt) {
-              instance.dataValues.bookedAt = formatDateReadable(
-                instance.dataValues.bookedAt
-              );
-            }
-          }
-          return instance;
-        };
-
-        if (Array.isArray(result)) {
-          return result.map(formatInstance);
-        }
-        return formatInstance(result);
-      },
-    },
   }
 );
 
