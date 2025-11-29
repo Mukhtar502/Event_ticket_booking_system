@@ -1,0 +1,11 @@
+
+
+{
+  "development": {
+    "username": "postgres",
+    "password": "your_password_here",
+    "database": "event_booking_db",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}

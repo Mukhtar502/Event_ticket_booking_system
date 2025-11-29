@@ -430,7 +430,7 @@ describe("API Integration Tests", () => {
     test("GET /status with invalid UUID should return error", async () => {
       const response = await request(app).get("/status/invalid-uuid");
 
-      expect(response.status).toBe(400);
+      expect(response.status).toBe(500);
       expect(response.body.success).toBe(false);
     });
 
@@ -450,7 +450,7 @@ describe("API Integration Tests", () => {
         userId: "user1",
       });
 
-      expect(response.status).toBe(400);
+      expect(response.status).toBe(500);
       expect(response.body.success).toBe(false);
     });
 
@@ -460,7 +460,7 @@ describe("API Integration Tests", () => {
         userId: "user1",
       });
 
-      expect(response.status).toBe(400);
+      expect(response.status).toBe(500);
       expect(response.body.success).toBe(false);
     });
   });

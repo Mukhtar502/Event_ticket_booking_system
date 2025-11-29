@@ -9,8 +9,8 @@
     "dev": "nodemon server.js",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage",
     "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watch",
-    "test:unit": "cross-env NODE_OPTIONS=--experimental-vm-modules jest tests/unit",
-    "test:integration": "cross-env NODE_OPTIONS=--experimental-vm-modules jest tests/integration",
+    "test:unit": "NODE_OPTIONS=--experimental-vm-modules jest tests/unit",
+    "test:integration": "NODE_OPTIONS=--experimental-vm-modules jest tests/integration",
     "db:migrate": "sequelize db:migrate --config config/config.cjs",
     "db:create": "sequelize db:create --config config/config.cjs",
     "db:migrate:undo": "sequelize db:migrate:undo"

@@ -1,3 +1,4 @@
+
 /**
  * Date Formatter Utility
  *
@@ -38,22 +39,22 @@ export function formatDateISO(date) {
  */
 export function formatDateReadable(date) {
   if (!date) return null;
-
+  
   if (typeof date === "string") {
     // Attempt to parse the string back into a Date object
     const parsedDate = new Date(date);
-
+    
     // KEY FIX: Check if the parsing failed (e.g., if it was already a custom formatted string)
     if (isNaN(parsedDate.getTime())) {
       // It's already formatted OR an unparseable string, return the original input as is
-      return date;
+      return date; 
     }
     date = parsedDate; // Use the successfully parsed date object
   } else if (isNaN(date.getTime())) {
-    // If it was passed in as a non-string Invalid Date object
-    return date;
+      // If it was passed in as a non-string Invalid Date object
+      return date;
   }
-
+  
   const months = [
     "Jan",
     "Feb",

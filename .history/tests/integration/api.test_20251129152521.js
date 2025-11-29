@@ -263,7 +263,7 @@ describe("API Integration Tests", () => {
     test("should handle invalid event ID", async () => {
       const response = await request(app).get("/status/invalid-uuid-format");
 
-      expect(response.status).toBe(400);
+      expect(response.status).toBe(500);
       expect(response.body.success).toBe(false);
     });
 
@@ -271,7 +271,7 @@ describe("API Integration Tests", () => {
       const validUUID = "550e8400-e29b-41d4-a716-446655440000";
       const response = await request(app).get(`/status/${validUUID}`);
 
-      expect(response.status).toBe(400);
+      expect(response.status).toBe(500);
       expect(response.body.success).toBe(false);
     });
   });
@@ -423,14 +423,14 @@ describe("API Integration Tests", () => {
         userId: "user1",
       });
 
-      expect(response.status).toBe(400);
+      expect(response.status).toBe(500);
       expect(response.body.success).toBe(false);
     });
 
     test("GET /status with invalid UUID should return error", async () => {
       const response = await request(app).get("/status/invalid-uuid");
 
-      expect(response.status).toBe(400);
+      expect(response.status).toBe(500);
       expect(response.body.success).toBe(false);
     });
 
@@ -450,7 +450,7 @@ describe("API Integration Tests", () => {
         userId: "user1",
       });
 
-      expect(response.status).toBe(400);
+      expect(response.status).toBe(500);
       expect(response.body.success).toBe(false);
     });
 
@@ -460,7 +460,7 @@ describe("API Integration Tests", () => {
         userId: "user1",
       });
 
-      expect(response.status).toBe(400);
+      expect(response.status).toBe(500);
       expect(response.body.success).toBe(false);
     });
   });

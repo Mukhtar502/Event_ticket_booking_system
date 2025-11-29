@@ -9,14 +9,14 @@
  *
  * TDD APPROACH:
  * These tests are written FIRST
- * Then implemented the code to make them pass
+ * Then we implement code to make them pass
  *
  * HOW TO RUN:
  * npm run test:unit
  * npm run test:watch (runs on every file change)
  *
  * COVERAGE:
- *  aiming for 80%+ test coverage
+ *  aim for 80%+ test coverage
  */
 
 import sequelize from "../../src/config/database.js";

@@ -9,7 +9,7 @@
  *
  * TDD APPROACH:
  * These tests are written FIRST
- * Then implemented the code to make them pass
+ * Then implement code to make them pass
  *
  * HOW TO RUN:
  * npm run test:unit

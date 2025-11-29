@@ -52,7 +52,7 @@ Content-Type: application/json
   "message": "Event initialized successfully",
   "data": {
     "id": "550e8400-e29b-41d4-a716-446655440000",
-    "name": "Nigeria vs Congo football match",
+    "name": "Taylor Swift Concert",
     "totalTickets": 500,
     "availableTickets": 500,
     "createdAt": "28 Nov 2025 at 21:11:00 UTC",

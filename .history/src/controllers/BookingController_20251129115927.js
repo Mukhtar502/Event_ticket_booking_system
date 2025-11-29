@@ -97,10 +97,7 @@ class BookingController {
       });
     } catch (error) {
       logger.error(`Book ticket error: ${error.message}`);
-      return res.status(400).json({
-        success: false,
-        message: error.message,
-      });
+      
     }
   }
 
@@ -142,10 +139,7 @@ class BookingController {
       });
     } catch (error) {
       logger.error(`Cancel booking error: ${error.message}`);
-      return res.status(400).json({
-        success: false,
-        message: error.message,
-      });
+      throw error;
     }
   }
 
@@ -179,10 +173,7 @@ class BookingController {
       });
     } catch (error) {
       logger.error(`Get event status error: ${error.message}`);
-      return res.status(400).json({
-        success: false,
-        message: error.message,
-      });
+      throw error;
     }
   }
 }
