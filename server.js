@@ -49,6 +49,18 @@ const startServer = async () => {
     });
 
     // Graceful shutdown
+
+    // Graceful shutdown process.
+    /**
+     * Handles application termination signals (SIGINT, SIGTERM) for graceful shutdown.
+     *
+     * SIGINT (Signal Interrupt): Typically sent when a user presses Ctrl+C in the terminal.
+     * SIGTERM (Signal Terminate): A polite request sent by process managers (like Docker, Kubernetes,
+     *                             or systemd) to stop the application safely before a forceful kill.
+     *
+     * This ensures that open connections (HTTP server, database connection) are closed cleanly,
+     * preventing data corruption and allowing in-flight requests to finish properly.
+     */
     process.on("SIGTERM", () => {
       logger.info("SIGTERM received, shutting down gracefully...");
       server.close(async () => {
