@@ -537,7 +537,6 @@ this.lock.acquire(eventId, async () => {
 **Alternative (not used): Raw SQL**
 
 - Less code safety
-- More SQL knowledge needed
 - Harder to maintain
 
 ### 4. Express.js Framework
@@ -560,7 +559,7 @@ this.lock.acquire(eventId, async () => {
 
 ---
 
-## 🔒 Concurrency Handling
+##  Concurrency Handling
 
 ### The Problem (Race Condition)
 
@@ -571,7 +570,7 @@ Time   User A                  User B                  Result
 2      (processing)           READ: available=100     B also knows there are 100
 3      WRITE: available=99    (waiting)               A books ticket
 4      (waiting)              WRITE: available=99     B books SAME ticket!
-       OVERBOOKING ERROR! ❌   We sold 2 tickets when only 1 existed
+       OVERBOOKING ERROR!    We sold 2 tickets when only 1 existed
 ```
 
 ### The Solution (AsyncLock)
@@ -585,7 +584,7 @@ Time   User A                  User B                  Result
 4      LOCK released           LOCK acquired           Now B can proceed
 5                              READ: available=99      B reads current state
 6                              WRITE: available=98     B updates
-7                              LOCK released           Done! ✅ Correct state
+7                              LOCK released           Done! Correct state
 ```
 
 ### Test Verification
@@ -607,7 +606,7 @@ test("should prevent overbooking with concurrent requests", async () => {
 
 ---
 
-## 📊 Database Schema
+##  Database Schema
 
 ### Events Table
 
@@ -664,7 +663,7 @@ CREATE INDEX idx_waitinglist_eventId_userId
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 Event_ticket_booking-system/
@@ -680,7 +679,7 @@ Event_ticket_booking-system/
 │   │   └── index.js                 # Export all models
 │   │
 │   ├── services/
-│   │   └── BookingService.js        # 🔑 Core business logic + locks
+│   │   └── BookingService.js        #  Core business logic + locks
 │   │
 │   ├── controllers/
 │   │   └── BookingController.js     # HTTP request handlers
@@ -715,7 +714,7 @@ Event_ticket_booking-system/
 
 ---
 
-## 🎁 Bonus Features
+##  Bonus Features
 
 ### 1. Rate Limiting
 
@@ -842,21 +841,8 @@ const booking = await Booking.findOne({
 const booking = await Booking.findOne({ where: { ... } });
 ```
 
-### Load Testing
 
-Test with concurrent load:
-
-```bash
-# Using Apache Bench
-ab -n 1000 -c 100 http://localhost:3000/status/event-id
-
-# Using autocannon
-npx autocannon http://localhost:3000 -c 100 -d 30
-```
-
----
-
-## 🐛 Common Issues & Solutions
+## Common Issues & Solutions
 
 ### Issue: "Event not found"
 
@@ -880,7 +866,7 @@ npx autocannon http://localhost:3000 -c 100 -d 30
 
 ---
 
-## 📞 Support & Troubleshooting
+##  Support & Troubleshooting
 
 ### Enable Debug Logging
 
@@ -920,68 +906,13 @@ npm run db:migrate
 | 409  | Conflict     | User already booked                  |
 | 500  | Server Error | Database error, internal logic error |
 
----
-
-## 🚢 Deployment
-
-### Production Checklist
-
-- [ ] Change `NODE_ENV=production`
-- [ ] Generate secure JWT_SECRET
-- [ ] Use environment variables (not hardcoded)
-- [ ] Set up database backups
-- [ ] Enable HTTPS
-- [ ] Configure rate limiting appropriately
-- [ ] Set up monitoring/alerting
-- [ ] Run full test suite
-- [ ] Test with production-like load
-
-### Deploy to Heroku
-
-```bash
-# Create Procfile
-echo "web: npm start" > Procfile
-
-# Deploy
-git push heroku main
-
-# View logs
-heroku logs --tail
-```
-
-### Deploy to DigitalOcean
-
-```bash
-# SSH into droplet
-ssh root@your-ip
-
-# Clone repo and setup
-git clone <repo>
-cd Event_ticket_booking-system
-npm install
-
-# Start with PM2
-npm install -g pm2
-pm2 start server.js --name "booking-api"
-pm2 startup
-pm2 save
-```
-
----
-
-## 📄 License
-
-MIT License - See LICENSE file for details
-
----
-
 ## 👤 Author
 
-**Your Name**
+**Efunkunle Mukthar*
 
-- GitHub: [@yourprofile](https://github.com/yourprofile)
-- Email: your.email@example.com
+- GitHub:(https://github.com/mukhtar502)
+- Email: efunkunleolabode@gmail.com
 
 ---
 
-**Last Updated:** November 27, 2024
+**Last Updated:** November 29, 2024
