@@ -129,7 +129,7 @@ This prevents the classic overbooking problem where multiple users could book th
 
 ```bash
 git clone <your-repo-url>
-cd Event_ticket_booking-system
+cd Event_ticket_booking_system
 ```
 
 ### 2. Install Dependencies
