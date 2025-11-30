@@ -23,7 +23,7 @@
     "api",
     "concurrency"
   ],
-  "author": "Your Name",
+  "author": "Efunkunle Mukthar",
   "license": "MIT",
   "dependencies": {
     "async-lock": "^1.4.0",
